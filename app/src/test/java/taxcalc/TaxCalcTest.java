@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import taxcalc.models.TaxItem;
+import taxcalc.models.FinancialRecord;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -15,22 +15,22 @@ public class TaxCalcTest {
 
     @Test
     public void canCalculateTax() throws Exception {        
-        List<TaxItem> taxReport = List.of(
-            new TaxItem(40, "GBP"),
-            new TaxItem(50, "GBP"),
-            new TaxItem(60, "GBP")
+        List<FinancialRecord> taxReport = List.of(
+            new FinancialRecord(40, "GBP"),
+            new FinancialRecord(50, "GBP"),
+            new FinancialRecord(60, "GBP")
         );
 
-        TaxItem netAmount = taxCalc.getNetAmount(taxReport);
+        FinancialRecord netAmount = taxCalc.getNetAmount(taxReport);
         assertEquals(135, netAmount.getAmount());
     }
 
     @Test
     public void cannotSumDifferentCurrencies() throws Exception {
         try {
-            List<TaxItem> taxReport = List.of(
-                new TaxItem(4, "GBP"),
-                new TaxItem(5, "USD")
+            List<FinancialRecord> taxReport = List.of(
+                new FinancialRecord(4, "GBP"),
+                new FinancialRecord(5, "USD")
             );
 
             taxCalc.getNetAmount(taxReport);

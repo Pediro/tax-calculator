@@ -1,10 +1,10 @@
 package taxcalc.models;
 
-public class TaxItem {
+public class FinancialRecord {
     private int amount;
     private String currency;
 
-    public TaxItem(int amount, String currency) {
+    public FinancialRecord(int amount, String currency) {
         this.amount = amount;
         this.currency = currency;
     }
